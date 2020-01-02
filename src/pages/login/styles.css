@@ -1,0 +1,15 @@
+.login-form {
+  padding-top: 20px;
+  width: 35%;
+}
+.login-form-forgot {
+  float: right;
+}
+.login-form-button {
+  width: 100%;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
