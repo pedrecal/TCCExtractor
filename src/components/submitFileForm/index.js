@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 
 import { Upload, Button, Progress } from 'antd';
+import {UploadOutlined} from '@ant-design/icons'
 import api from '../../services/api';
-import axios from 'axios'
 
 const SubmitFile = () => {
   const [defaultFileList, setDefaultFileList] = useState([]);
@@ -15,7 +15,7 @@ const SubmitFile = () => {
     const config = {
       headers: {
       "content-type": "multipart/form-data",
-      'authtoken': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGY1NzA4ZGU4MDhhZDJiMjNmNjhjNWYiLCJpYXQiOjE1NzkyODcwOTQsImV4cCI6MTU3OTMwNTA5NH0.-ZepgApnWJEmCD-G-osWw9rcoxFq7ilerpNJJat6fGo"
+      'authtoken': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGY1NzA4ZGU4MDhhZDJiMjNmNjhjNWYiLCJpYXQiOjE1Nzk0NDU5NzIsImV4cCI6MTU3OTQ2Mzk3Mn0.WmtVGWD_kdzGuKb5nxCK_EXFXPRsntIEmtP0sWQYnJY"
     },
       onUploadProgress: event => {
         const percent = Math.floor((event.loaded / event.total) * 100);
@@ -58,14 +58,19 @@ const SubmitFile = () => {
   }
 
   return (
-    <div className="container">
+    <div>
+      <div>Aqui são feitos os uploads dos arquivos de TCC, e automaticamente extraídos os dados. O resultado da extração pode ser visualizado na aba de Informações extraçãoidas</div>
+      <br></br>
       <Upload
         {...props}
         customRequest={uploadFile}
         onChange={handleOnChange}
         defaultFileList={defaultFileList}
       >
-        {defaultFileList.length >= 1 ? null : <div>Upload Button</div>}
+        {/* {defaultFileList.length >= 1 ? null : <div>Upload Button</div>} */}
+        <Button>
+          <UploadOutlined /> Upload
+        </Button>
       </Upload>
       {progress > 0 ? <Progress percent={progress} /> : null}
     </div>
